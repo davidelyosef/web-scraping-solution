@@ -1,0 +1,30 @@
+.table-wrapper {
+  overflow: hidden;
+}
+
+table {
+  display: block;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 16px;
+  border-collapse: collapse;
+  overflow: scroll;
+}
+
+td,
+th {
+  border: 1px solid #787878;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  background-color: #dddddd;
+}
+
+@media (min-width: 768px) {
+  table {
+    display: table;
+    margin-inline: auto;
+  }
+}

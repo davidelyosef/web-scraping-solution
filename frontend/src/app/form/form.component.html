@@ -1,0 +1,49 @@
+<form (ngSubmit)="onSubmit($event)" #form="ngForm">
+  <div class="input-wrapper">
+    <label for="url_string"> URL </label>
+    <input
+      type="url"
+      [(ngModel)]="url"
+      name="url"
+      id="url_string"
+      required
+      pattern="https?://.+"
+      (blur)="urlTouched = true"
+      #urlValue="ngModel"
+    />
+    <div
+      class="error-message"
+      *ngIf="
+        urlTouched && urlValue.invalid && (urlValue.dirty || urlValue.touched)
+      "
+    >
+      Please insert a valid URL address
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <label for="depth"> Depth </label>
+    <input
+      type="number"
+      [(ngModel)]="depth"
+      name="depth"
+      id="depth"
+      required
+      min="1"
+      (blur)="depthTouched = true"
+      #depthValue="ngModel"
+    />
+    <div
+      class="error-message"
+      *ngIf="
+        depthTouched &&
+        depthValue.invalid &&
+        (depthValue.dirty || depthValue.touched)
+      "
+    >
+      Depth must be bigger or equal to 1
+    </div>
+  </div>
+
+  <input type="submit" value="Submit" [disabled]="form.invalid" />
+</form>
